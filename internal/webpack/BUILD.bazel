@@ -1,0 +1,7 @@
+load("@build_bazel_rules_nodejs//:defs.bzl", "nodejs_binary")
+
+nodejs_binary(
+    name = "webpack",
+    entry_point = "webpack/bin/webpack.js",
+    visibility = ["//visibility:public"],
+)

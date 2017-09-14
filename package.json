@@ -1,0 +1,9 @@
+{
+  "name": "bazel_build_rules_webpack",
+  "version": "0.0.1",
+  "description": "Bazel rules for Webpack",
+  "license": "MIT",
+  "peerDependencies": {
+    "webpack": "3.x.x"
+  }
+}
