@@ -31,10 +31,16 @@ def _webpack_bundle_impl(ctx):
       },
   )
 
+  sources = depset()
+  for d in ctx.attr.deps:
+    if hasattr(d, "typescript"):
+      sources += d.typescript.es5_sources
+
   args = ["--config", ctx.outputs.webpack_config.path]
   args += ["--progress"]
   ctx.action(
       progress_message = "Webpack bundling %s" % ctx.attr.entry_point,
+      inputs = sources,
       outputs = [ctx.outputs.bundle],
       executable = ctx.executable._webpack,
       arguments = args,
@@ -47,6 +53,7 @@ webpack_bundle = rule(
     attrs = {
         "entry_point": attr.string(mandatory=True),
         "target": attr.string(mandatory=True),
+        "deps": attr.label_list(),
         "_webpack": attr.label(
           default=Label("//internal/webpack:webpack"),
           executable=True,

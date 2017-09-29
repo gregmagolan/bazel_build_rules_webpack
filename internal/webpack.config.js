@@ -10,6 +10,7 @@ var webpackConfig = {
   },
   resolve: {
     alias: {
+      __main__: 'TEMPLATED_root_dir',
       src: 'TEMPLATED_root_dir/src',
       'node_modules/@angular/animations/index': '@angular/animations',
       'node_modules/@angular/animations/browser/index': '@angular/animations/browser',
