@@ -12,6 +12,7 @@ var webpackConfig = {
     alias: {
       __main__: 'TEMPLATED_root_dir',
       src: 'TEMPLATED_root_dir/src',
+      'node_modules/@angular': '@angular',
     }
   },
   output: {
