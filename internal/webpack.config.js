@@ -13,9 +13,11 @@ var webpackConfig = {
     'TEMPLATED_name': 'TEMPLATED_entry_point',
   },
   resolve: {
+    modules: ['src', 'node_modules'],
     alias: {
       __main__: 'TEMPLATED_root_dir',
-      src: 'TEMPLATED_root_dir/src',
+      'src/browser': 'browser',
+      'src/server': 'server',
       'node_modules/@angular': '@angular',
     }
   },
@@ -25,7 +27,8 @@ var webpackConfig = {
   module: {
     rules: [
       { test: /\.node$/, use: 'node-loader' }
-    ]
+    ],
+    noParse: [/dtrace-provider.js$/],
   },
   plugins: [
     new webpack.ContextReplacementPlugin(/(.+)?angular(\\|\/)core(.+)?/, root('src')),
